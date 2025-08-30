@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagelet - Your College Life Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <span class="brand-text">Pagelet</span>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notes</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </div>
+                <div class="nav-item dark-mode-toggle" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                    <span id="theme-text">Dark</span>
+                </div>
+                <div class="nav-item" onclick="handleRefresh()">
+                    <i class="fas fa-sync-alt" id="refresh-icon"></i>
+                    <span>Refresh</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Header Section -->
+            <div class="page-header">
+                <h1 class="page-title">Today's Schedule</h1>
+                <p class="page-subtitle">Stay organized with your daily lectures and events</p>
+                <div class="current-date" id="currentDate"></div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="timeline-container">
+                <div class="timeline-header">
+                    <h2>Lecture Timeline</h2>
+                    <div class="timeline-controls">
+                        <button class="timeline-btn active" data-view="today">Today</button>
+                        <button class="timeline-btn" data-view="week">This Week</button>
+                    </div>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline" id="timeline">
+                        <!-- Timeline items will be populated by JavaScript -->
+                        <div class="loading-state" id="loadingState">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading your schedule...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lecture Details Modal -->
+    <div class="modal-overlay" id="lectureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Lecture Details</h3>
+                <button class="modal-close" onclick="closeLectureModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="lecture-info">
+                    <div class="info-row">
+                        <i class="fas fa-clock"></i>
+                        <span id="modalTime">9:00 AM - 10:30 AM</span>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modalLocation">Room 301</span>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-user"></i>
+                        <span id="modalProfessor">Prof. Johnson</span>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-book"></i>
+                        <span id="modalDescription">Introduction to Quantum Mechanics principles</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="action-btn primary" id="modalJoinBtn">Join Class</button>
+                    <button class="action-btn secondary" onclick="addNotes()">Add Notes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>your.email@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Social</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Pagelet</h4>
+                <p>Your personal college life manager</p>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Pagelet. Made with ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
